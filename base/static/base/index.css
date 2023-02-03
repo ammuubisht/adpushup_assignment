@@ -1,0 +1,54 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+*{
+    font-family: 'Poppins', 'sans-serif';
+    text-align: center;
+
+}
+
+#upper, #lower{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
+
+#country{
+    height: 100px;
+}
+
+.filter-params{
+    display: flex;
+    flex-direction: column;
+}
+
+.label{
+    font-weight: bold;
+    color: #434343;
+}
+
+#plot-btn{
+    width: 100px;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #428cfb;
+    color: #fff;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+.download-link{
+    color: #fff;
+    background-color: #353535;
+    padding: 5px 12px;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    text-align: center;
+    border-radius: 3px ;
+    margin: 10px auto;
+}

@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base/index.css' %}">
+    <title>Data Visualization</title>
+</head>
+<body>
+    <form method="get">
+        {% csrf_token %}
+        <h1 class="heading1">Filter Data</h1>
+        <div id="upper">
+            <div class="filter-params">
+                <label for="country" class="label">Select Countries</label>
+                <select name="country" id="country" multiple>
+                    {% for country in countries %}
+                        <option value="{{country}}">{{country}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter-params">
+                <label for="key-value" class="label">Key Value</label>
+                <select name="key-value" id="key-value">
+                    <option value="control">Control</option>
+                    <option value="experiment">Experiment</option>
+                </select>
+            </div>
+
+            <div class="filter-params">
+                <label for="date" class="label">Date</label>
+                <select name="date" id="date">
+                    <option value="2023-01-31">2023-01-31</option>
+                </select>
+
+            </div>
+        </div>
+
+        <h1 class="heading1">Select Values to Plot Between</h1>
+        <div id="lower">
+        <div class="filter-params">
+            <label for="y-value" class="label">Choose Y value:</label>
+            <select name="y-value" id="y-value">
+                <option value="total_code_served_count">Total Code Served Count</option>
+                <option value="unfilled_impressions">Unfilled Impressions</option>
+                <option value="total_impresions">Total Impressions</option>
+                <option value="cpm_cpc_revenue">CPM CPC Revenue</option>
+                <option value="average_ecpm">Average eCPM</option>
+                <option value="ad_server_impressions">Ad Server Impressions</option>
+                <option value="ad_server_average_ecpm">Ad Server Average eCPM</option>
+                <option value="ad_sever_cpm_cpc_revenue">Ad Server CPM CPC Revenue</option>
+                <option value="ad_exchange_impressions">Ad Exchange Impressions</option>
+                <option value="ad_exchange_revenue">Ad Exchange Revenue</option>
+                <option value="ad_exchange_average_ecpm">Ad Exchange Average eCPM</option>
+            </select>
+        </div>
+
+        <div class="filter-params" >
+
+            <label for="x-value" class="label">Choose X value:</label>
+            <select name="x-value" id="x-value">
+                <option value="total_code_served_count">Total Code Served Count</option>
+                <option value="unfilled_impressions">Unfilled Impressions</option>
+                <option value="total_impresions">Total Impressions</option>
+                <option value="cpm_cpc_revenue">CPM CPC Revenue</option>
+                <option value="average_ecpm">Average eCPM</option>
+                <option value="ad_server_impressions">Ad Server Impressions</option>
+                <option value="ad_server_average_ecpm">Ad Server Average eCPM</option>
+                <option value="ad_sever_cpm_cpc_revenue">Ad Server CPM CPC Revenue</option>
+                <option value="ad_exchange_impressions">Ad Exchange Impressions</option>
+                <option value="ad_exchange_revenue">Ad Exchange Revenue</option>
+                <option value="ad_exchange_average_ecpm">Ad Exchange Average eCPM</option>
+            </select>
+        </div>
+        </div>  
+
+            <input type="submit" value="Plot" id="plot-btn">
+    </form>
+
+    {% if data %}
+        <img src="data:image/png;base64, {{data|safe}}">
+        <a href="data:image/png;base64, {{data|safe}}" class="download-link" download>Export as PNG</a>
+    {% endif %}
+
+    
+</body>
+</html>
